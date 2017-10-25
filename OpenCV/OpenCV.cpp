@@ -65,40 +65,5 @@ int main(int argc, char** argv)
 
 	waitKey(0);
 
-	imshow(window_name_1, image);
-	imshow(window_name_2, gray_image);
-
-	String window_name_r = "Red image";
-	String window_name_g = "Green image";
-	String window_name_b = "Blue image";
-
-	namedWindow(window_name_r, WINDOW_AUTOSIZE);
-	namedWindow(window_name_g, WINDOW_AUTOSIZE);
-	namedWindow(window_name_b, WINDOW_AUTOSIZE);
-
-	Mat color_layers[3];
-	split(image, color_layers);
-
-	imshow(window_name_b, color_layers[0]);
-	imshow(window_name_g, color_layers[1]);
-	imshow(window_name_r, color_layers[2]);
-
-	waitKey(0);
-
-	Mat sharpen;
-
-	String window_name_sharp = "Sharp image";
-	namedWindow(window_name_sharp, WINDOW_AUTOSIZE);
-
-	Sharpen(image, sharpen);
-
-	imshow(window_name_sharp, sharpen);
-
-	waitKey(0);
-
-
-
-	waitKey(0);
-
 	return 0;
 }
