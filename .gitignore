@@ -31,5 +31,6 @@
 *.out
 *.app
 
-\OpenCV\Debug
-\.vs
+Debug
+OpenCV\Debug
+.vs
