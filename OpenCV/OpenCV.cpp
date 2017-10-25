@@ -54,19 +54,7 @@ int main(int argc, char** argv)
 	namedWindow(window_name_1, WINDOW_AUTOSIZE); // Create a window for display.
 	imshow(window_name_1, image); // Show our image inside it.
 
-	Mat gray_image;
-	cvtColor(image, gray_image, CV_BGR2GRAY);
-
-
-	imwrite("../gray_lena.jpg", gray_image);
-	String window_name_2 = "Gray image";
-	namedWindow(window_name_2, WINDOW_AUTOSIZE);
-	imshow(window_name_2, gray_image);
-
-	waitKey(0);
-
 	imshow(window_name_1, image);
-	imshow(window_name_2, gray_image);
 
 	String window_name_r = "Red image";
 	String window_name_g = "Green image";
@@ -82,21 +70,6 @@ int main(int argc, char** argv)
 	imshow(window_name_b, color_layers[0]);
 	imshow(window_name_g, color_layers[1]);
 	imshow(window_name_r, color_layers[2]);
-
-	waitKey(0);
-
-	Mat sharpen;
-
-	String window_name_sharp = "Sharp image";
-	namedWindow(window_name_sharp, WINDOW_AUTOSIZE);
-
-	Sharpen(image, sharpen);
-
-	imshow(window_name_sharp, sharpen);
-
-	waitKey(0);
-
-
 
 	waitKey(0);
 
