@@ -54,49 +54,23 @@ int main(int argc, char** argv)
 	namedWindow(window_name_1, WINDOW_AUTOSIZE); // Create a window for display.
 	imshow(window_name_1, image); // Show our image inside it.
 
-	Mat gray_image;
-	cvtColor(image, gray_image, CV_BGR2GRAY);
-
-
-	imwrite("../gray_lena.jpg", gray_image);
-	String window_name_2 = "Gray image";
-	namedWindow(window_name_2, WINDOW_AUTOSIZE);
-	imshow(window_name_2, gray_image);
-
-	waitKey(0);
-
-	imshow(window_name_1, image);
-	imshow(window_name_2, gray_image);
-
-	String window_name_r = "Red image";
-	String window_name_g = "Green image";
-	String window_name_b = "Blue image";
-
-	namedWindow(window_name_r, WINDOW_AUTOSIZE);
-	namedWindow(window_name_g, WINDOW_AUTOSIZE);
-	namedWindow(window_name_b, WINDOW_AUTOSIZE);
-
-	Mat color_layers[3];
-	split(image, color_layers);
-
-	imshow(window_name_b, color_layers[0]);
-	imshow(window_name_g, color_layers[1]);
-	imshow(window_name_r, color_layers[2]);
-
-	waitKey(0);
-
-	Mat sharpen;
-
-	String window_name_sharp = "Sharp image";
-	namedWindow(window_name_sharp, WINDOW_AUTOSIZE);
+	Mat sharpen, blured, kernel;
+	Point anchor = Point(-1, -1);
+	int ddepth = -1;
 
 	Sharpen(image, sharpen);
 
+	int kernel_size = 13;
+	kernel = Mat::ones(kernel_size, kernel_size, CV_32F) / (float)(kernel_size*kernel_size);
+	filter2D(image, blured, ddepth, kernel, anchor, 0, BORDER_DEFAULT);
+
+	String window_name_sharp = "Sharp image";
+	String window_name_blur = "Blur image";
+	namedWindow(window_name_sharp, WINDOW_AUTOSIZE);
+	namedWindow(window_name_blur, WINDOW_AUTOSIZE);
+
 	imshow(window_name_sharp, sharpen);
-
-	waitKey(0);
-
-
+	imshow(window_name_blur, blured);
 
 	waitKey(0);
 
